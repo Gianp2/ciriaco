@@ -1,0 +1,6 @@
+{
+  "name": "Ciriaco Materiales",
+  "description": "Corralón de materiales para la construcción. Catálogo de bloques de hormigón, encadenados, losas, símil piedra, columnas, adoquines y losetas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

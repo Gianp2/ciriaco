@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: #F5F4F0;
+  --color-surface: #FFFFFF;
+  --color-graphite: #252B30;
+  --color-stone: #69737A;
+  --color-terracotta: #B77948;
+  --color-terracotta-hover: #9F6639;
+  --color-brand-blue: #008FD5;
+}
+
+:root {
+  --header-height: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --header-height: 4rem;
+  }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-graphite);
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 0.5rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Grilla adaptable fluida: 1 col en <=340px, 2 cols en móviles estándar, 3 en tablet, 4 en desktop */
+.catalog-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 152px), 1fr));
+}
+
+@media (min-width: 640px) {
+  .catalog-grid {
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog-grid {
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+/* Carrusel infinito de marcas (solo transform: translate3d para 60fps sin recálculos de layout) */
+@keyframes brands-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.brands-marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+}
+
+.brands-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: brands-marquee-scroll var(--brands-duration, 36s) linear infinite;
+}
+
+@media (hover: hover) {
+  .brands-marquee-mask:hover .brands-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+.brands-marquee-mask:focus-within .brands-marquee-track,
+.brands-marquee-track[data-paused='true'] {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-marquee-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .brands-marquee-track {
+    width: 100%;
+    animation: none;
+    transform: none;
+  }
+
+  .brands-marquee-duplicate {
+    display: none;
+  }
+}

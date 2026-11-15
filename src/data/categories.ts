@@ -1,0 +1,68 @@
+import { Category } from '@/src/types/catalog';
+
+export const categoriesData: Category[] = [
+  {
+    id: 'muros',
+    name: 'Bloques para muros',
+    shortDescription: 'Bloques portantes y medios bloques para mampostería estructural y cerramientos.',
+    order: 1,
+    imageUrl: null,
+    shapeVariant: 'block-hollow-full',
+  },
+  {
+    id: 'vistos',
+    name: 'Bloques vistos',
+    shortDescription: 'Piezas de terminación lisa para mampostería a la vista sin revoque.',
+    order: 2,
+    imageUrl: null,
+    shapeVariant: 'block-visible-full',
+  },
+  {
+    id: 'encadenados',
+    name: 'Encadenados',
+    shortDescription: 'Bloques canaleta en U para vigas de encadenado, dinteles y refuerzos.',
+    order: 3,
+    imageUrl: null,
+    shapeVariant: 'channel-u',
+  },
+  {
+    id: 'losas-y-tapas',
+    name: 'Losas y tapas',
+    shortDescription: 'Elementos premoldeados planos para entrepisos, cubiertas y tapas.',
+    order: 4,
+    imageUrl: null,
+    shapeVariant: 'slab',
+  },
+  {
+    id: 'simil-piedra',
+    name: 'Símil piedra',
+    shortDescription: 'Bloques con cara texturada para muros arquitectónicos, esquinas y pilares.',
+    order: 5,
+    imageUrl: null,
+    shapeVariant: 'split-face',
+  },
+  {
+    id: 'columnas',
+    name: 'Columnas',
+    shortDescription: 'Encofrados premoldeados para columnas estructurales y pilares.',
+    order: 6,
+    imageUrl: null,
+    shapeVariant: 'column-square',
+  },
+  {
+    id: 'adoquines',
+    name: 'Adoquines',
+    shortDescription: 'Pavimentos articulados de hormigón vibroprensado para tránsito peatonal y vehicular.',
+    order: 7,
+    imageUrl: null,
+    shapeVariant: 'paver-unipaver',
+  },
+  {
+    id: 'losetas',
+    name: 'Losetas',
+    shortDescription: 'Baldosones premoldeados para veredas, patios y solados exteriores.',
+    order: 8,
+    imageUrl: null,
+    shapeVariant: 'tile-square',
+  },
+];
